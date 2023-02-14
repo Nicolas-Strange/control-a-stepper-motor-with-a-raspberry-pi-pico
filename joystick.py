@@ -36,7 +36,7 @@ class JoystickReader:
         Sequence: left, right, up, down, then press z
         Sequence: middle, then press z
         """
-        print("Calibration x, y: slowly rotate the joystick in all the direction then press z")
+        print("Calibration x, y: slowly rotate the joystick in all the directions then press z")
         x_values, y_values = self._calibration()
         self._min_x = min(x_values)
         self._max_x = max(x_values)
