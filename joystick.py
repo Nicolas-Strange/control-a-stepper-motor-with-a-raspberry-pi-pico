@@ -53,7 +53,7 @@ class JoystickReader:
         self._middle_y = int(sum(y_values) / len(y_values))
 
         values = x_values + y_values
-        self._std_middle = 2 * int((sum((x-(sum(values) / len(values)))**2 for x in values) / (len(values)-1))**0.5)
+        self._std_middle = 3 * int((sum((x-(sum(values) / len(values)))**2 for x in values) / (len(values)-1))**0.5)
 
         self._cal_conf["min_x"] = self._min_x
         self._cal_conf["min_y"] = self._min_y
