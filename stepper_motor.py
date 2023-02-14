@@ -4,12 +4,6 @@ import utime
 
 class StepMotorController:
     """ core class to control the stepper motor"""
-    # mapping Inputs of the stepper motor and the GPIO number of the Raspberry Pi Pico
-    IN_1 = 0
-    IN_2 = 1
-    IN_3 = 2
-    IN_4 = 3
-
     # The total number of steps of your stepper motor (check the specs)
     TOTAL_STEP = 2048
 
@@ -19,13 +13,19 @@ class StepMotorController:
     # The minimum rotation speed will be MAX_SLEEP * TOTAL_STEP (about 102 seconds / full rotation)
     MAX_SLEEP = 0.05
 
-    def __init__(self):
-        """ init function """
+    def __init__(self, in_1: int, in_2: int, in_3: int, in_4):
+        """
+        init function
+        :param in_1: GPIO number where the IN1 is plugged
+        :param in_2: GPIO number where the IN2 is plugged
+        :param in_3: GPIO number where the IN3 is plugged
+        :param in_4: GPIO number where the IN4 is plugged
+        """
         self._pins = [
-            Pin(self.IN_1, Pin.OUT),
-            Pin(self.IN_2, Pin.OUT),
-            Pin(self.IN_3, Pin.OUT),
-            Pin(self.IN_4, Pin.OUT)
+            Pin(in_1, Pin.OUT),
+            Pin(in_2, Pin.OUT),
+            Pin(in_3, Pin.OUT),
+            Pin(in_4, Pin.OUT)
         ]
 
         self._motor_count = 0

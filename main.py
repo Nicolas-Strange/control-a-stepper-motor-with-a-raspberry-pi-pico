@@ -9,8 +9,8 @@ class Main:
         """
         init function
         """
-        self._stepper = StepMotorController()
-        self._joystick = JoystickReader()
+        self._stepper = StepMotorController(in_1=0, in_2=1, in_3=2, in_4=3)
+        self._joystick = JoystickReader(vr_x=26, vr_y=27, vr_z=28)
 
     def run(self) -> None:
         """

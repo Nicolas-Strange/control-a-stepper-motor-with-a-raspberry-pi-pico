@@ -6,16 +6,17 @@ from machine import ADC, Pin
 
 class JoystickReader:
     """ core class to read the Joystick values """
-    # mapping Inputs of the joystick and the GPIO number of the Raspberry Pi Pico
-    VR_X = 26
-    VR_Y = 27
-    BUTT_Z = 28
 
-    def __init__(self):
-        """ init function """
-        self._analog_x = ADC(Pin(self.VR_X))
-        self._analog_y = ADC(Pin(self.VR_Y))
-        self._analog_z = Pin(self.BUTT_Z, Pin.IN, Pin.PULL_UP)
+    def __init__(self, vr_x: int, vr_y: int, vr_z: int):
+        """
+        init function
+        :param vr_x: GPIO number where the VRX is plugged
+        :param vr_y: GPIO number where the VRY is plugged
+        :param vr_z: GPIO number where the VRZ is plugged
+        """
+        self._analog_x = ADC(Pin(vr_x))
+        self._analog_y = ADC(Pin(vr_y))
+        self._analog_z = Pin(vr_z, Pin.IN, Pin.PULL_UP)
 
         with open("./calibration.json") as infile:
             self._cal_conf = json.load(infile)
